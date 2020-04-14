@@ -93,7 +93,7 @@ class DQN():
         
         # Minimize the loss
         grad = tape.gradient(loss, self.q_local.model.trainable_variables)
-        self.critic_optimizer.apply_gradients(zip(grad, self.q_local.model.trainable_variables))
+        self.q_optimizer.apply_gradients(zip(grad, self.q_local.model.trainable_variables))
 
         # ----------------------- update target networks ----------------------- #
         self.soft_update(self.q_local.model, self.q_target.model, self.tau)
