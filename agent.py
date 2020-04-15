@@ -57,8 +57,9 @@ class DQN():
             
             # Train the network for a number of epochs specified by the parameter
             for i in range(self.n_learn_updates):
-                experiences = self.memory.sample(self.batch_size)
-                self.learn(experiences, self.gamma)
+                with tf.device(device):
+                    experiences = self.memory.sample(self.batch_size)
+                    self.learn(experiences, self.gamma)
 
     def act(self, state, epsilon=0):
         """Returns actions for given state as per epsilon greedy policy."""
