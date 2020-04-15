@@ -57,7 +57,7 @@ class DQN():
             
             # Train the network for a number of epochs specified by the parameter
             for i in range(self.n_learn_updates):
-                with tf.device(device):
+                with tf.device(self.device):
                     experiences = self.memory.sample(self.batch_size)
                     self.learn(experiences, self.gamma)
 
